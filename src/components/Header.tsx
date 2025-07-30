@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
 import { ThemeContext } from '../contexts/ThemeContext';
+import { categories } from '../constants/categories';
 
 const languages = [
   { code: 'en', label: 'English' },
@@ -9,15 +10,6 @@ const languages = [
   { code: 'mr', label: 'Marathi' },
   { code: 'ta', label: 'Tamil' },
   { code: 'te', label: 'Telugu' },
-];
-
-// ✅ Sample categories – update if needed
-const categories = [
-  { id: 1, name: 'News', slug: 'news' },
-  { id: 2, name: 'Tech', slug: 'tech' },
-  { id: 3, name: 'AI', slug: 'ai' },
-  { id: 4, name: 'Tips', slug: 'tips' },
-  { id: 5, name: 'Reviews', slug: 'reviews' },
 ];
 
 const Header: React.FC = () => {
@@ -52,7 +44,7 @@ const Header: React.FC = () => {
                 to={`/category/${category.slug}`}
                 className="text-gray-700 dark:text-gray-300 hover:text-orange-600 dark:hover:text-orange-400 font-medium transition-colors"
               >
-                {t(category.name.toLowerCase()) || category.name}
+                {t(category.slug) || category.name}
               </Link>
             ))}
           </nav>
