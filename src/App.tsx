@@ -6,7 +6,7 @@ import { Footer } from './components/Footer';
 import { MobileBottomNav } from './components/MobileBottomNav';
 import { HomePage } from './pages/HomePage';
 import { CategoryPage } from './pages/CategoryPage';
-import { BlogPostPage } from './pages/BlogPostPage';
+import BlogPostPage from './pages/BlogPostPage'; // ✅ CORRECT
 import { LanguageProvider } from './contexts/LanguageContext';
 import { ThemeProvider } from './contexts/ThemeContext';
 

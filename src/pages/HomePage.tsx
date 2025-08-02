@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { TopBar } from '../components/TopBar';
 import { HeroSection } from '../components/HeroSection';
 import { CategorySection } from '../components/CategorySection';
@@ -6,28 +6,38 @@ import { Sidebar } from '../components/Sidebar';
 import { AdSpace } from '../components/AdSpace';
 import { SEOHead } from '../components/SEOHead';
 import { categories } from '../constants/categories';
-import { 
-  mockPosts, 
-  getFeaturedPosts, 
-  getLatestPosts, 
-  getPopularPosts, 
-  getPostsByCategory 
-} from '../constants/mockPosts';
+import { fetchPosts } from '../hooks/fetchPosts'; // ✅ Make sure path is correct
+import { BlogPost } from '../types';
 
 export const HomePage: React.FC = () => {
-  const featuredPosts = getFeaturedPosts();
-  const latestPosts = getLatestPosts();
-  const popularPosts = getPopularPosts();
-  
-  const mainStory = featuredPosts[0] || mockPosts[0];
-  const sideStories = mockPosts.filter(post => post.id !== mainStory.id).slice(0, 3);
+  const [allPosts, setAllPosts] = useState<BlogPost[]>([]);
+
+  useEffect(() => {
+    const loadPosts = async () => {
+      const posts = await fetchPosts(50); // Fetch more for filtering
+      setAllPosts(posts);
+    };
+    loadPosts();
+  }, []);
+
+  const featuredPosts = allPosts.filter((post) => post.featured);
+  const latestPosts = [...allPosts].sort(
+    (a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime()
+  );
+  const popularPosts = [...allPosts].slice(0, 5); // You can refine this logic later
+
+  const mainStory = featuredPosts[0] || latestPosts[0];
+  const sideStories = latestPosts.filter(post => post.id !== mainStory?.id).slice(0, 3);
+
+  const getPostsByCategory = (categoryName: string) =>
+    allPosts.filter(post => post.category === categoryName);
 
   return (
     <>
       <SEOHead />
       <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
         <TopBar />
-        
+
         {/* Hero Section */}
         <HeroSection mainStory={mainStory} sideStories={sideStories} />
 

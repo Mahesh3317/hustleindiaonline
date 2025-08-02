@@ -1,19 +1,33 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { NewsCard } from '../components/NewsCard';
 import { AdSpace } from '../components/AdSpace';
 import { Sidebar } from '../components/Sidebar';
 import { categories } from '../constants/categories';
-import { getPostsByCategory, getLatestPosts, getPopularPosts } from '../constants/mockPosts';
 import { SEOHead } from '../components/SEOHead';
+import { fetchPosts } from '../hooks/fetchPosts'; // ✅ Update path if needed
+import { BlogPost } from '../types';
 
 export const CategoryPage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
   const category = categories.find(cat => cat.slug === slug);
-  
-  const categoryPosts = category ? getPostsByCategory(category.name) : [];
-  const latestPosts = getLatestPosts();
-  const popularPosts = getPopularPosts();
+
+  const [categoryPosts, setCategoryPosts] = useState<BlogPost[]>([]);
+  const [latestPosts, setLatestPosts] = useState<BlogPost[]>([]);
+  const [popularPosts, setPopularPosts] = useState<BlogPost[]>([]);
+
+  useEffect(() => {
+    const loadData = async () => {
+      if (!category) return;
+      const posts = await fetchPosts(50, category.name);
+      setCategoryPosts(posts);
+      const allPosts = await fetchPosts(20);
+      setLatestPosts([...allPosts].sort((a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime()));
+      setPopularPosts([...allPosts].slice(0, 5));
+    };
+
+    loadData();
+  }, [category]);
 
   if (!category) {
     return (
@@ -63,7 +77,6 @@ export const CategoryPage: React.FC = () => {
                     {categoryPosts.map((post, index) => (
                       <React.Fragment key={post.id}>
                         <NewsCard post={post} variant="list" />
-                        {/* Ad after every 4 posts */}
                         {(index + 1) % 4 === 0 && (
                           <div className="my-8">
                             <AdSpace size="rectangle" className="mx-auto" />
@@ -73,7 +86,7 @@ export const CategoryPage: React.FC = () => {
                     ))}
                   </div>
 
-                  {/* Pagination */}
+                  {/* Pagination Placeholder */}
                   <div className="mt-12 flex justify-center">
                     <nav className="flex space-x-2">
                       <button className="px-4 py-2 bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400 rounded-lg border dark:border-gray-700">
