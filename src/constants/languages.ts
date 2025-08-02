@@ -1,13 +1,3 @@
-import { Language } from '../types';
-
-export const languages: Language[] = [
-  { code: 'hi', name: 'Hindi', nativeName: 'हिंदी', flag: '🇮🇳' },
-  { code: 'en', name: 'English', nativeName: 'English', flag: '🇬🇧' },
-  { code: 'mr', name: 'Marathi', nativeName: 'मराठी', flag: '🇮🇳' },
-  { code: 'ta', name: 'Tamil', nativeName: 'தமிழ்', flag: '🇮🇳' },
-  { code: 'te', name: 'Telugu', nativeName: 'తెలుగు', flag: '🇮🇳' },
-];
-
 export const translations = {
   hi: {
     home: 'होम',
@@ -28,6 +18,25 @@ export const translations = {
     moreNews: 'अन्य समाचार',
     popular: 'लोकप्रिय',
     advertisement: 'विज्ञापन',
+    news: 'समाचार',
+    tech: 'तकनीक',
+    ai: 'कृत्रिम बुद्धिमत्ता',
+    tips: 'टिप्स',
+    reviews: 'समीक्षाएं',
+    astrology: 'ज्योतिष',
+    numerology: 'अंकज्योतिष',
+    dreams: 'सपने',
+    angelNumbers: 'एंजेल नंबर',
+    blogging: 'ब्लॉगिंग',
+    earnOnline: 'ऑनलाइन कमाई',
+
+    // Additional Categories
+    'tech-ai': 'तकनीक और एआई',
+    'dreams-numerology': 'सपने और अंकज्योतिष',
+    'app-reviews': 'ऐप समीक्षाएं',
+    'cricket-sports': 'क्रिकेट और खेल',
+    'lifestyle-trends': 'जीवनशैली और ट्रेंड्स',
+    'market-manufacturing': 'बाज़ार और निर्माण',
   },
   en: {
     home: 'Home',
@@ -48,6 +57,25 @@ export const translations = {
     moreNews: 'More News',
     popular: 'Popular',
     advertisement: 'Advertisement',
+    news: 'News',
+    tech: 'Tech',
+    ai: 'AI',
+    tips: 'Tips',
+    reviews: 'Reviews',
+    astrology: 'Astrology',
+    numerology: 'Numerology',
+    dreams: 'Dreams',
+    angelNumbers: 'Angel Numbers',
+    blogging: 'Blogging',
+    earnOnline: 'Earn Online',
+
+    // Additional Categories
+    'tech-ai': 'Tech & AI',
+    'dreams-numerology': 'Dreams & Numerology',
+    'app-reviews': 'App Reviews',
+    'cricket-sports': 'Cricket & Sports',
+    'lifestyle-trends': 'Lifestyle & Trends',
+    'market-manufacturing': 'Market & Manufacturing',
   },
   mr: {
     home: 'होम',
@@ -68,6 +96,25 @@ export const translations = {
     moreNews: 'इतर बातम्या',
     popular: 'लोकप्रिय',
     advertisement: 'जाहिरात',
+    news: 'बातम्या',
+    tech: 'तंत्रज्ञान',
+    ai: 'एआय',
+    tips: 'टीप्स',
+    reviews: 'पुनरावलोकने',
+    astrology: 'ज्योतिष',
+    numerology: 'अंकज्योतिष',
+    dreams: 'स्वप्ने',
+    angelNumbers: 'देवदूत क्रमांक',
+    blogging: 'ब्लॉगिंग',
+    earnOnline: 'ऑनलाइन कमाई',
+
+    // Additional Categories
+    'tech-ai': 'तंत्रज्ञान आणि एआय',
+    'dreams-numerology': 'स्वप्ने आणि अंकज्योतिष',
+    'app-reviews': 'अ‍ॅप पुनरावलोकने',
+    'cricket-sports': 'क्रिकेट आणि खेळ',
+    'lifestyle-trends': 'जीवनशैली आणि ट्रेंड्स',
+    'market-manufacturing': 'बाजार आणि उत्पादन',
   },
   ta: {
     home: 'முகப்பு',
@@ -88,6 +135,25 @@ export const translations = {
     moreNews: 'மேலும் செய்திகள்',
     popular: 'பிரபலமான',
     advertisement: 'விளம்பரம்',
+    news: 'செய்திகள்',
+    tech: 'தொழில்நுட்பம்',
+    ai: 'ஏஐ',
+    tips: 'குறிப்புகள்',
+    reviews: 'விமர்சனங்கள்',
+    astrology: 'ஜோதிடம்',
+    numerology: 'எண்கள்',
+    dreams: 'கனவுகள்',
+    angelNumbers: 'தேவதூதர் எண்கள்',
+    blogging: 'வலைப்பதிவு',
+    earnOnline: 'நிகழ்நேர வருமானம்',
+
+    // Additional Categories
+    'tech-ai': 'தொழில்நுட்பம் & ஏஐ',
+    'dreams-numerology': 'கனவுகள் மற்றும் எண்கள்',
+    'app-reviews': 'அப்பிளிக்கேஷன் விமர்சனங்கள்',
+    'cricket-sports': 'கிரிக்கெட் & விளையாட்டுகள்',
+    'lifestyle-trends': 'வாழ்க்கை முறை & போக்குகள்',
+    'market-manufacturing': 'சந்தை & உற்பத்தி',
   },
   te: {
     home: 'హోమ్',
@@ -108,5 +174,24 @@ export const translations = {
     moreNews: 'మరిన్ని వార్తలు',
     popular: 'ప్రసిద్ధ',
     advertisement: 'ప్రకటన',
+    news: 'వార్తలు',
+    tech: 'టెక్నాలజీ',
+    ai: 'ఏఐ',
+    tips: 'సూచనలు',
+    reviews: 'సమీక్షలు',
+    astrology: 'జ్యోతిష్యం',
+    numerology: 'సంఖ్యాశాస్త్రం',
+    dreams: 'కలలు',
+    angelNumbers: 'దూత సంఖ్యలు',
+    blogging: 'బ్లాగింగ్',
+    earnOnline: 'ఆన్‌లైన్ ఆదాయం',
+
+    // Additional Categories
+    'tech-ai': 'టెక్నాలజీ & ఏఐ',
+    'dreams-numerology': 'కలలు & సంఖ్యాశాస్త్రం',
+    'app-reviews': 'యాప్ సమీక్షలు',
+    'cricket-sports': 'క్రికెట్ & క్రీడలు',
+    'lifestyle-trends': 'జీవనశైలి & ధోరణులు',
+    'market-manufacturing': 'మార్కెట్ & తయారీ',
   },
 };
