@@ -5,6 +5,7 @@ import { fetchPostBySlug } from '../hooks/fetchPostBySlug';
 import { fetchPosts } from '../hooks/fetchPosts';
 import { SEOHead } from '../components/SEOHead';
 import { NewsCard } from '../components/NewsCard';
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 
 const BlogPostPage = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -53,10 +54,9 @@ const BlogPostPage = () => {
         />
       )}
 
-      <div
-        className="prose prose-lg max-w-none"
-        dangerouslySetInnerHTML={{ __html: post.content }}
-      />
+      <div className="prose prose-lg max-w-none">
+        {documentToReactComponents(post.content)}
+      </div>
 
       {relatedPosts.length > 0 && (
         <div className="mt-12">
